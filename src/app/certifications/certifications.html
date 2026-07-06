@@ -1,0 +1,63 @@
+<section id="certifications" class="certs section">
+  <div class="container">
+
+    <div class="section-header reveal" appScrollReveal>
+      <span class="section-tag">// 06. certifications</span>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+
+    <div class="certs__grid">
+      @for (cert of certs; track cert.name) {
+        <div class="certs__card terminal-card reveal" appScrollReveal>
+          <div class="terminal-card__header">
+            <div class="terminal-card__dots">
+              <span class="red"></span><span class="yellow"></span><span class="green"></span>
+            </div>
+            <span class="terminal-card__title">cert.json</span>
+          </div>
+
+          @if (cert.image) {
+            <button
+              type="button"
+              class="certs__media certs__img-wrap"
+              (click)="openCert(cert)"
+              [attr.aria-label]="'View ' + cert.name"
+            >
+              <img [src]="cert.image" [alt]="cert.name" class="certs__img" />
+              <span class="certs__zoom" aria-hidden="true">⤢</span>
+            </button>
+          } @else if (cert.logo) {
+            <button
+              type="button"
+              class="certs__media certs__logo-wrap"
+              (click)="openCert(cert)"
+              [attr.aria-label]="'View ' + cert.name"
+            >
+              <img [src]="cert.logo" [alt]="cert.issuer + ' logo'" class="certs__logo" />
+              <span class="certs__zoom" aria-hidden="true">⤢</span>
+            </button>
+          }
+
+          <div class="terminal-card__body certs__body">
+            @if (!cert.image && !cert.logo) {
+              <span class="certs__icon">{{ cert.icon }}</span>
+            }
+            <h3 class="certs__name">{{ cert.name }}</h3>
+            <span class="certs__issuer">{{ cert.issuer }}</span>
+            @if (cert.date) {
+              <span class="certs__date">{{ cert.date }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="certs__platforms reveal" appScrollReveal>
+      <span class="certs__platforms-label">Active on:</span>
+      @for (p of platforms; track p) {
+        <span class="tag tag-cyan">{{ p }}</span>
+      }
+    </div>
+
+  </div>
+</section>

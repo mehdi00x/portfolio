@@ -1,0 +1,71 @@
+<section id="writeups" class="writeups section">
+  <div class="container">
+
+    <div class="section-header reveal" appScrollReveal>
+      <span class="section-tag">// 04. writeups & research</span>
+      <h2 class="section-title">Writeups</h2>
+    </div>
+
+    <p class="writeups__intro reveal" appScrollReveal>
+      Technical notes and research backing my work — analysis, exploitation, and low-level writeups.
+    </p>
+
+    @if (tags.length > 1) {
+      <div class="writeups__filter reveal" appScrollReveal role="group" aria-label="Filter writeups by tag">
+        <button
+          type="button"
+          class="writeups__chip"
+          [class.writeups__chip--active]="activeTag() === null"
+          (click)="activeTag.set(null)"
+        >All</button>
+        @for (tag of tags; track tag) {
+          <button
+            type="button"
+            class="writeups__chip"
+            [class.writeups__chip--active]="activeTag() === tag"
+            [attr.aria-pressed]="activeTag() === tag"
+            (click)="toggleTag(tag)"
+          >{{ tag }}</button>
+        }
+      </div>
+    }
+
+    <div class="writeups__grid">
+      @for (w of filtered(); track w.title) {
+        <article class="terminal-card writeups__card reveal" appScrollReveal>
+          <div class="terminal-card__header">
+            <div class="terminal-card__dots">
+              <span class="red"></span><span class="yellow"></span><span class="green"></span>
+            </div>
+            <span class="terminal-card__title">writeup.md</span>
+            @if (w.featured) {
+              <span class="writeups__featured">★ featured</span>
+            }
+          </div>
+          <div class="terminal-card__body">
+            <div class="writeups__meta">
+              <span class="writeups__category tag-cyan">{{ w.category }}</span>
+              <span class="writeups__dot">·</span>
+              <span class="writeups__date">{{ w.date }}</span>
+              <span class="writeups__dot">·</span>
+              <span class="writeups__reading">{{ w.readingTime }}</span>
+            </div>
+            <h3 class="writeups__title">{{ w.title }}</h3>
+            <p class="writeups__summary">{{ w.summary }}</p>
+            <div class="writeups__tags">
+              @for (tag of w.tags; track tag) {
+                <span class="tag">{{ tag }}</span>
+              }
+            </div>
+            @if (w.link) {
+              <a [href]="w.link" target="_blank" rel="noopener" class="writeups__link">
+                {{ w.linkLabel || 'Open' }} →
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+  </div>
+</section>

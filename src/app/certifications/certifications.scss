@@ -1,0 +1,146 @@
+.certs {
+  background: var(--bg-primary);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  &__icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  &__name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  &__issuer {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-green);
+    opacity: 0.8;
+  }
+
+  &__date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  // clickable image / logo area (button reset)
+  &__media {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: -2px;
+    }
+  }
+
+  &__img-wrap {
+    max-height: 160px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.9);
+    transition: filter 0.3s, transform 0.4s;
+
+    .certs__card:hover & {
+      filter: brightness(1);
+      transform: scale(1.04);
+    }
+  }
+
+  // brand logos (pwn.college, SoloLearn) — contained on a neutral tile
+  &__logo-wrap {
+    height: 160px;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02)),
+      #0b0f14;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo {
+    max-width: 78%;
+    max-height: 64%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.4s;
+
+    .certs__card:hover & { transform: scale(1.05); }
+  }
+
+  // zoom affordance shown on hover of any clickable cert media
+  &__zoom {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+  }
+
+  &__media:hover &__zoom,
+  &__media:focus-visible &__zoom {
+    opacity: 1;
+  }
+
+  &__view-link {
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    color: var(--accent-cyan);
+    text-decoration: none;
+    margin-top: 0.25rem;
+    transition: color 0.2s;
+
+    &:hover { color: var(--accent-green); text-decoration: underline; }
+  }
+
+  &__platforms {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  &__platforms-label {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+}

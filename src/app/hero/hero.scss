@@ -1,0 +1,281 @@
+/* ── Hero section ──────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 5vw;
+  box-sizing: border-box;
+}
+
+/* ── Soft dark scrim behind the centered content ────
+   Keeps the CPU scene from competing with the text —
+   the 3D background stays brightest toward the top-right. */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 42vw 42vh at 50% 48%,
+    rgba(3, 8, 5, 0.82) 0%,
+    rgba(3, 8, 5, 0.55) 45%,
+    rgba(3, 8, 5, 0.18) 70%,
+    transparent 88%
+  );
+}
+
+/* ── Centered content panel ─────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  max-width: 580px;
+  width: 100%;
+  margin-top: 0;
+}
+
+/* ── Terminal card ─────────────────────────────────── */
+.terminal-card {
+  width: 100%;
+  background: rgba(5, 15, 10, 0.72);
+  border: 1px solid rgba(0, 255, 65, 0.25);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(0, 255, 65, 0.06), inset 0 0 40px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.terminal-topbar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(0, 255, 65, 0.12);
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.12s ease, filter 0.15s ease;
+
+    // macOS traffic-light glyph, revealed on hover of the topbar
+    &::after {
+      content: '';
+      font-family: -apple-system, 'Segoe UI Symbol', system-ui, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.55);
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+  }
+
+  &:hover .dot::after { opacity: 1; }
+  .dot:hover { transform: scale(1.15); filter: brightness(1.08); }
+
+  .dot-red    { background: #ff5f57; &::after { content: '\00D7'; } }  // ×
+  .dot-yellow { background: #febc2e; &::after { content: '\2212'; } }  // −
+  .dot-green  { background: #28c840; &::after { content: '\2921'; } }  // ⤡
+
+  .title {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: monospace;
+  }
+}
+
+.terminal-body {
+  padding: 20px 22px 24px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+
+  p { margin: 0; }
+}
+
+.terminal-prompt {
+  color: #00ff41;
+  font-weight: 600;
+}
+
+.terminal-cmd { color: #ffffff; }
+
+.terminal-output {
+  color: rgba(255, 255, 255, 0.8);
+  span { color: #00e5ff; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 16px;
+  background: #00ff41;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Each output line fades/slides in as the terminal "types" it out */
+.hero-line-in {
+  animation: heroLineIn 0.28s ease both;
+}
+
+@keyframes heroLineIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line-in { animation: none; }
+  .terminal-cursor { animation: none; }
+}
+
+/* ── CTA Buttons ───────────────────────────────────── */
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-primary {
+  padding: 11px 24px;
+  background: #00ff41;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    box-shadow: 0 0 22px rgba(0, 255, 65, 0.55);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-outline {
+  padding: 11px 24px;
+  background: transparent;
+  color: #00ff41;
+  border: 1px solid rgba(0, 255, 65, 0.5);
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    border-color: #00ff41;
+    box-shadow: 0 0 14px rgba(0, 255, 65, 0.25);
+    transform: translateY(-2px);
+  }
+}
+
+/* ── Animated scroll indicator ─────────────────────── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.scroll-label {
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: rgba(0, 255, 65, 0.4);
+  animation: fadeScroll 2s ease-in-out infinite;
+}
+
+.scroll-chevrons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.chevron {
+  width: 18px;
+  height: 18px;
+  border-right: 1.5px solid rgba(0, 255, 65, 0.7);
+  border-bottom: 1.5px solid rgba(0, 255, 65, 0.7);
+  transform: rotate(45deg);
+}
+
+.chevron.c1 { animation: cascadeChevron 1.6s ease-in-out infinite 0s;    opacity: 0.25; }
+.chevron.c2 { animation: cascadeChevron 1.6s ease-in-out infinite 0.25s; opacity: 0.55; }
+.chevron.c3 { animation: cascadeChevron 1.6s ease-in-out infinite 0.5s;  opacity: 0.85; }
+
+@keyframes cascadeChevron {
+  0%   { opacity: 0; transform: rotate(45deg) translateY(-4px); }
+  50%  { opacity: 1; transform: rotate(45deg) translateY(4px);  }
+  100% { opacity: 0; transform: rotate(45deg) translateY(8px);  }
+}
+
+@keyframes fadeScroll {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.8; }
+}
+
+/* ── Responsive ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 4vw;
+    align-items: flex-end;
+    padding-bottom: 100px;
+  }
+
+  .hero-content { max-width: 100%; }
+
+  .hero-scrim {
+    background: radial-gradient(
+      ellipse 70vw 55vh at 50% 74%,
+      rgba(3, 8, 5, 0.85) 0%,
+      rgba(3, 8, 5, 0.6) 45%,
+      rgba(3, 8, 5, 0.2) 70%,
+      transparent 88%
+    );
+  }
+
+  .hero-buttons { flex-direction: column; }
+
+  .btn-primary,
+  .btn-outline { justify-content: center; }
+}

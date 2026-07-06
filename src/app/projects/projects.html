@@ -1,0 +1,145 @@
+<section id="projects" class="projects section">
+  <div class="container">
+
+    <div class="section-header reveal" appScrollReveal>
+      <span class="section-tag">// 03. projects</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+
+    <!-- Category filter -->
+    <div class="projects__filters reveal" appScrollReveal>
+      <div class="projects__filter-row" role="group" aria-label="Filter projects by category">
+        <button
+          type="button"
+          class="projects__chip"
+          [class.projects__chip--active]="activeCategory() === null"
+          (click)="setCategory(null)"
+        >All</button>
+        @for (cat of categories; track cat) {
+          <button
+            type="button"
+            class="projects__chip"
+            [class.projects__chip--active]="activeCategory() === cat"
+            [attr.aria-pressed]="activeCategory() === cat"
+            (click)="setCategory(cat)"
+          >{{ cat }}</button>
+        }
+      </div>
+
+      <!-- Tag filter -->
+      <div class="projects__filter-row projects__filter-row--tags" role="group" aria-label="Filter projects by tool or tag">
+        @for (tag of tags; track tag) {
+          <button
+            type="button"
+            class="projects__tag-chip"
+            [class.projects__tag-chip--active]="activeTag() === tag"
+            [attr.aria-pressed]="activeTag() === tag"
+            (click)="toggleTag(tag)"
+          >{{ tag }}</button>
+        }
+      </div>
+
+      @if (activeCategory() || activeTag()) {
+        <button type="button" class="projects__clear" (click)="clearFilters()">
+          ✕ Clear filters
+        </button>
+      }
+    </div>
+
+    @if (filtered().length === 0) {
+      <p class="projects__empty">No projects match this filter yet.</p>
+    }
+
+    <div class="projects__grid">
+      @for (proj of filtered(); track proj.title) {
+        <div class="terminal-card projects__card reveal" appScrollReveal>
+          <div class="terminal-card__header">
+            <div class="terminal-card__dots">
+              <span class="red"></span><span class="yellow"></span><span class="green"></span>
+            </div>
+            <span class="terminal-card__title">{{ proj.file }}</span>
+            @if (proj.featured) {
+              <span class="projects__featured" title="Featured project">★ featured</span>
+            }
+          </div>
+
+          @if (proj.image) {
+            <div class="projects__img-wrap">
+              <img [src]="proj.image" [alt]="proj.title" class="projects__img" loading="lazy" />
+            </div>
+          }
+
+          <div class="terminal-card__body">
+            <div class="projects__meta">
+              <span class="projects__prompt">$</span>
+              <span class="projects__context">{{ proj.context }}</span>
+              <span class="projects__date">{{ proj.date }}</span>
+            </div>
+
+            <span class="projects__category tag-cyan">{{ proj.category }}</span>
+            <h3 class="projects__title">{{ proj.title }}</h3>
+            <p class="projects__desc">{{ proj.summary }}</p>
+
+            <!-- Expandable Problem → Work → Tools → Result -->
+            @if (isExpanded(proj.title)) {
+              <dl class="projects__detail">
+                <dt>Problem</dt>
+                <dd>{{ proj.problem }}</dd>
+                <dt>What I did</dt>
+                <dd>{{ proj.work }}</dd>
+                <dt>Tools</dt>
+                <dd>{{ proj.tools.join(' · ') }}</dd>
+                <dt>Result</dt>
+                <dd>{{ proj.result }}</dd>
+              </dl>
+            }
+
+            <button
+              type="button"
+              class="projects__expand"
+              [attr.aria-expanded]="isExpanded(proj.title)"
+              (click)="toggleExpand(proj.title)"
+            >
+              {{ isExpanded(proj.title) ? '▲ Hide details' : '▼ Show details' }}
+            </button>
+
+            <div class="projects__footer">
+              <div class="projects__tags">
+                @for (tag of proj.tags; track tag) {
+                  <button
+                    type="button"
+                    class="tag projects__tag-btn"
+                    [class.projects__tag-btn--active]="activeTag() === tag"
+                    (click)="toggleTag(tag)"
+                  >{{ tag }}</button>
+                }
+              </div>
+
+              @if (proj.links?.report) {
+                <a [href]="proj.links!.report" target="_blank" rel="noopener" class="projects__ext-btn">
+                  <span>📄</span> Report
+                </a>
+              }
+              @if (proj.links?.writeup) {
+                <a [href]="proj.links!.writeup" target="_blank" rel="noopener" class="projects__ext-btn">
+                  <span>📝</span> Writeup
+                </a>
+              }
+              @if (proj.links?.github) {
+                <a [href]="proj.links!.github" target="_blank" rel="noopener" class="projects__ext-btn">
+                  <span>⌥</span> GitHub
+                </a>
+              }
+              @if (proj.links?.demo) {
+                <a [href]="proj.links!.demo" target="_blank" rel="noopener" class="projects__ext-btn projects__ext-btn--video">
+                  <span>▶</span> Demo
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

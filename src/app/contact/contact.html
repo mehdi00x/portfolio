@@ -1,0 +1,111 @@
+<section id="contact" class="contact section">
+  <div class="container">
+
+    <div class="section-header reveal" appScrollReveal>
+      <span class="section-tag">// 08. contact</span>
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+
+    <div class="contact__grid">
+
+      <div class="contact__info reveal" appScrollReveal>
+        <p class="contact__intro">
+          I'm open to internships, research collaborations, and CTF teamups.
+          Drop a message and I'll get back to you.
+        </p>
+
+        <div class="contact__links">
+          <a class="contact__link" href="mailto:mehdiabouelmouahib10@gmail.com">
+            <span class="contact__link-icon">✉</span>
+            <span>mehdiabouelmouahib10&#64;gmail.com</span>
+          </a>
+          <a class="contact__link" href="https://www.linkedin.com/in/mehdi-abouelmouahib-52b161254/" target="_blank" rel="noopener">
+            <span class="contact__link-icon">in</span>
+            <span>linkedin.com/in/mehdi-abouelmouahib</span>
+          </a>
+          <a class="contact__link" href="tel:+212622735587">
+            <span class="contact__link-icon">✆</span>
+            <span>+212 622-735587</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="terminal-card contact__form-card reveal" appScrollReveal>
+        <div class="terminal-card__header">
+          <div class="terminal-card__dots">
+            <span class="red"></span><span class="yellow"></span><span class="green"></span>
+          </div>
+          <span class="terminal-card__title">send_message.sh</span>
+        </div>
+        <div class="terminal-card__body">
+
+          @if (!submitted()) {
+            <form class="contact__form" (ngSubmit)="submit()">
+              <div class="contact__field">
+                <label class="contact__label">
+                  <span class="contact__prompt">$</span> name
+                </label>
+                <input
+                  class="contact__input"
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  [ngModel]="name()"
+                  (ngModelChange)="name.set($event)"
+                  required
+                />
+              </div>
+
+              <div class="contact__field">
+                <label class="contact__label">
+                  <span class="contact__prompt">$</span> email
+                </label>
+                <input
+                  class="contact__input"
+                  type="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  [ngModel]="email()"
+                  (ngModelChange)="email.set($event)"
+                  required
+                />
+              </div>
+
+              <div class="contact__field">
+                <label class="contact__label">
+                  <span class="contact__prompt">$</span> message
+                </label>
+                <textarea
+                  class="contact__input contact__textarea"
+                  placeholder="Your message..."
+                  rows="5"
+                  name="message"
+                  [ngModel]="message()"
+                  (ngModelChange)="message.set($event)"
+                  required
+                ></textarea>
+              </div>
+
+              <button class="btn btn--primary contact__submit" type="submit">
+                Send Message <span>→</span>
+              </button>
+            </form>
+          } @else {
+            <div class="contact__success">
+              <span class="contact__success-icon">✓</span>
+              <p>Message sent! Opening your email client...</p>
+            </div>
+          }
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="contact__footer">
+    <span>© 2025 Mehdi Abouelmouahib</span>
+    <span class="contact__footer-sep">—</span>
+    <span class="contact__footer-mono">Built with Angular</span>
+  </footer>
+</section>

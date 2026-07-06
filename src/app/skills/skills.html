@@ -1,0 +1,51 @@
+<section id="skills" class="skills section">
+  <div class="container">
+
+    <div class="section-header reveal" appScrollReveal>
+      <span class="section-tag">// 02. skills</span>
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+
+    <p class="skills__hint reveal" appScrollReveal>
+      Skills marked <span class="skills__hint-tag">like this</span> are clickable —
+      they filter Projects to where I actually used them.
+    </p>
+
+    <div class="skills__grid">
+      @for (cat of categories; track cat.label) {
+        <div class="terminal-card skills__card reveal" appScrollReveal>
+          <div class="terminal-card__header">
+            <div class="terminal-card__dots">
+              <span class="red"></span><span class="yellow"></span><span class="green"></span>
+            </div>
+            <span class="terminal-card__title">{{ cat.file }}</span>
+          </div>
+          <div class="terminal-card__body">
+            <div class="skills__cat-header" [class.skills__cat-header--cyan]="cat.color === 'cyan'">
+              <span class="skills__icon">{{ cat.icon }}</span>
+              <span class="skills__cat-label">{{ cat.label }}</span>
+            </div>
+            <ul class="skills__list">
+              @for (item of cat.items; track item.label) {
+                <li class="skills__item">
+                  <span class="skills__bullet" [class.skills__bullet--cyan]="cat.color === 'cyan'">▸</span>
+                  @if (hasProjects(item.name)) {
+                    <button
+                      type="button"
+                      class="skills__link"
+                      (click)="showRelated(item.name)"
+                      [attr.aria-label]="'Show projects using ' + item.name"
+                    >{{ item.label || item.name }}</button>
+                  } @else {
+                    <span class="skills__text">{{ item.label || item.name }}</span>
+                  }
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

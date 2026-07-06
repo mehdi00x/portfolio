@@ -1,0 +1,26 @@
+@if (item(); as it) {
+  <div
+    class="lightbox"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="it.title"
+    (click)="close()"
+  >
+    <button type="button" class="lightbox__close" aria-label="Close" (click)="close()">✕</button>
+
+    <figure class="lightbox__figure" (click)="$event.stopPropagation()">
+      <img
+        [src]="it.src"
+        [alt]="it.title"
+        class="lightbox__img"
+        [class.lightbox__img--contain]="it.contain"
+      />
+      <figcaption class="lightbox__caption">
+        <h3 class="lightbox__title">{{ it.title }}</h3>
+        @if (it.description) {
+          <p class="lightbox__desc">{{ it.description }}</p>
+        }
+      </figcaption>
+    </figure>
+  </div>
+}

@@ -1,0 +1,57 @@
+<section class="hero">
+
+  <!-- 3D background fills entire section behind everything -->
+  <app-cyber-background></app-cyber-background>
+
+  <!-- Scrim keeps the CPU scene from fighting with the centered text -->
+  <div class="hero-scrim"></div>
+
+  <!-- Centered hero content -->
+  <div class="hero-content">
+
+    <!-- Terminal card (static — cursor blink is CSS-only) -->
+    <div class="terminal-card">
+      <div class="terminal-topbar">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span class="title">mehdi&#64;kali:~ — bash</span>
+      </div>
+      <div class="terminal-body">
+        <p>
+          <span class="terminal-prompt">mehdi&#64;kali:~$</span><span class="terminal-cmd">{{ typedCmd() }}</span>@if (!cmdDone()) {<span class="terminal-cursor"></span>}
+        </p>
+        @for (line of outputLines; track $index; let i = $index) {
+          @if (i < visibleLines()) {
+            <p class="terminal-output hero-line-in">@for (seg of line; track $index) {@if (seg.hl) {<span>{{ seg.t }}</span>} @else {{{ seg.t }}}}</p>
+          }
+        }
+        @if (allDone()) {
+          <p>
+            <span class="terminal-prompt">mehdi&#64;kali:~$</span>
+            <span class="terminal-cursor"></span>
+          </p>
+        }
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="hero-buttons">
+      <button class="btn-outline" (click)="scrollTo('#projects')">View My Work →</button>
+      <a class="btn-primary" href="/docs/cv.pdf" download>↓ Download CV</a>
+      <button class="btn-outline" (click)="scrollTo('#contact')">Contact Me</button>
+    </div>
+
+  </div>
+
+  <!-- Animated scroll indicator (absolute, bottom-center) -->
+  <div class="scroll-indicator" (click)="scrollToAbout()">
+    <span class="scroll-label">SCROLL</span>
+    <div class="scroll-chevrons">
+      <div class="chevron c1"></div>
+      <div class="chevron c2"></div>
+      <div class="chevron c3"></div>
+    </div>
+  </div>
+
+</section>

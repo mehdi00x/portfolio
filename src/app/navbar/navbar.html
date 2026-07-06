@@ -1,0 +1,39 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="navbar__container">
+
+    <a class="navbar__logo" (click)="scrollTo('#hero')">
+      <span class="navbar__logo-bracket">&lt;</span>mehdi-abouelmouahib<span class="navbar__logo-slash">/</span><span class="navbar__logo-bracket">&gt;</span>
+    </a>
+
+    <ul class="navbar__links" [class.open]="isMenuOpen()">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <a (click)="scrollTo(link.href)">
+            <span class="navbar__link-num">./</span>{{ link.label }}
+          </a>
+        </li>
+      }
+      <li class="navbar__cv-item">
+        <a href="/docs/cv.pdf" download class="navbar__cv-btn">
+          <span class="navbar__cv-icon">↓</span> CV
+        </a>
+      </li>
+    </ul>
+
+    <a href="/docs/cv.pdf" download class="navbar__cv-btn navbar__cv-btn--desktop" aria-label="Download CV">
+      <span class="navbar__cv-icon">↓</span> CV
+    </a>
+
+    <button
+      class="navbar__burger"
+      [class.active]="isMenuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Toggle menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</nav>

@@ -1,0 +1,113 @@
+<section id="about" class="about section">
+  <div class="container">
+
+    <div class="section-header reveal" appScrollReveal>
+      <span class="section-tag">// 01. about_me</span>
+      <h2 class="section-title">About Me</h2>
+    </div>
+
+    <div class="about__grid">
+
+      <!-- Left: text -->
+      <div class="about__text reveal" appScrollReveal>
+        <p>
+          Cybersecurity engineering student at <span class="highlight">ENSA Agadir</span> (4th year),
+          specializing in <span class="highlight">Security & Digital Trust</span>. I'm passionate about
+          low-level systems and their security — from CPU architecture to software vulnerabilities.
+          My work focuses on reverse engineering, binary exploitation, and vulnerability research,
+          with a long-term goal of contributing to system security research and embedded architecture security.
+        </p>
+        <p>
+          Currently serving as <span class="highlight">President of the Student Association</span> at
+          ENSA Agadir (2025), and an active <span class="highlight">CTF competitor</span> across
+          RE, Web, Crypto, and OSINT categories.
+        </p>
+
+        <div class="about__langs">
+          <span class="about__lang">Tamazight — Native</span>
+          <span class="about__lang">Arabic — Native</span>
+          <span class="about__lang">French — Fluent</span>
+          <span class="about__lang">English — Professional</span>
+        </div>
+
+      </div>
+
+      <!-- Right: sidebar -->
+      <div class="about__sidebar">
+
+        <div class="about__photo-wrap reveal" appScrollReveal>
+          <button
+            type="button"
+            class="about__photo-frame"
+            (click)="openPhoto()"
+            aria-label="View profile photo"
+          >
+            <img src="/images/profile.png" alt="Mehdi Abouelmouahib" class="about__photo" />
+            <span class="about__photo-zoom" aria-hidden="true">⤢</span>
+          </button>
+          <div class="about__photo-glow"></div>
+        </div>
+
+        <div class="terminal-card reveal" appScrollReveal>
+          <div class="terminal-card__header">
+            <div class="terminal-card__dots">
+              <span class="red"></span><span class="yellow"></span><span class="green"></span>
+            </div>
+            <span class="terminal-card__title">whoami.sh</span>
+          </div>
+          <div class="terminal-card__body about__info-list">
+            <div class="about__info-row">
+              <span class="about__info-key">name</span>
+              <span class="about__info-sep">:</span>
+              <span class="about__info-val">Abouelmouahib Mehdi</span>
+            </div>
+            <div class="about__info-row">
+              <span class="about__info-key">role</span>
+              <span class="about__info-sep">:</span>
+              <span class="about__info-val">Cybersecurity Student</span>
+            </div>
+            <div class="about__info-row">
+              <span class="about__info-key">location</span>
+              <span class="about__info-sep">:</span>
+              <span class="about__info-val">Agadir, Morocco</span>
+            </div>
+            <div class="about__info-row">
+              <span class="about__info-key">email</span>
+              <span class="about__info-sep">:</span>
+              <a class="about__info-val about__info-link"
+                 href="mailto:mehdiabouelmouahib10@gmail.com">
+                mehdiabouelmouahib10&#64;gmail.com
+              </a>
+            </div>
+            <div class="about__info-row">
+              <span class="about__info-key">phone</span>
+              <span class="about__info-sep">:</span>
+              <span class="about__info-val">+212 622-735587</span>
+            </div>
+            <div class="about__info-row">
+              <span class="about__info-key">status</span>
+              <span class="about__info-sep">:</span>
+              <span class="about__info-val about__info-green">✓ Open to opportunities</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__stats reveal" appScrollReveal>
+          <div class="about__stat">
+            <span class="about__stat-num">3+</span>
+            <span class="about__stat-label">CTF Events</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-num">2+</span>
+            <span class="about__stat-label">Internships</span>
+          </div>
+          <div class="about__stat">
+            <span class="about__stat-num">4th</span>
+            <span class="about__stat-label">Year Engineer</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

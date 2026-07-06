@@ -1,0 +1,113 @@
+.skills {
+  background: var(--bg-secondary);
+
+  &__hint {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 1.75rem;
+    margin-top: -1.5rem;
+  }
+
+  &__hint-tag {
+    color: var(--accent-cyan);
+    border-bottom: 1px dashed var(--border-cyan);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  &__card {
+    height: 100%;
+  }
+
+  &__cat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.1rem;
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    &--cyan {
+      color: var(--accent-cyan);
+    }
+  }
+
+  &__icon {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  &__cat-label {
+    text-shadow: var(--glow-sm);
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    font-family: var(--font-mono);
+  }
+
+  &__bullet {
+    color: var(--accent-green);
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 0.75rem;
+
+    &--cyan { color: var(--accent-cyan); }
+  }
+
+  &__text {
+    color: var(--text-secondary);
+  }
+
+  // clickable skills that cross-link to projects
+  &__link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-align: left;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-bottom: 1px dashed var(--border-cyan);
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+
+    &:hover {
+      color: var(--accent-cyan);
+      border-bottom-color: var(--accent-cyan);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 2px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .skills__grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .skills__grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,62 @@
+<section id="experience" class="timeline section">
+  <div class="container">
+
+    <div class="section-header reveal" appScrollReveal>
+      <span class="section-tag">// 05. experience & education</span>
+      <h2 class="section-title">Timeline</h2>
+    </div>
+
+    <div class="timeline__track">
+      <div class="timeline__line"></div>
+
+      @for (item of items; track item.title; let i = $index) {
+        <div
+          class="timeline__item reveal"
+          [class.timeline__item--left]="i % 2 === 0"
+          [class.timeline__item--right]="i % 2 !== 0"
+          appScrollReveal
+        >
+          <div class="timeline__dot" [class.timeline__dot--edu]="item.type === 'edu'"></div>
+
+          <div class="timeline__card terminal-card">
+            <div class="terminal-card__header">
+              <div class="terminal-card__dots">
+                <span class="red"></span><span class="yellow"></span><span class="green"></span>
+              </div>
+              <span class="terminal-card__title">
+                {{ item.type === 'work' ? 'experience.log' : 'education.log' }}
+              </span>
+            </div>
+
+            @if (item.image) {
+              <div class="timeline__img-wrap">
+                <img [src]="item.image" [alt]="item.title" class="timeline__img" />
+              </div>
+            }
+
+            <div class="terminal-card__body">
+              <div class="timeline__type-badge" [class.timeline__type-badge--edu]="item.type === 'edu'">
+                {{ item.type === 'work' ? '⚙ Work' : '🎓 Education' }}
+              </div>
+              <h3 class="timeline__title">{{ item.title }}</h3>
+              <div class="timeline__meta">
+                <span class="timeline__org">{{ item.org }}</span>
+                <span class="timeline__date">{{ item.date }}</span>
+              </div>
+              @if (item.points.length > 0) {
+                <ul class="timeline__points">
+                  @for (point of item.points; track point) {
+                    <li>
+                      <span class="timeline__bullet">▸</span> {{ point }}
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<section id="leadership" class="leadership section">
+  <div class="container">
+
+    <div class="section-header reveal" appScrollReveal>
+      <span class="section-tag">// 07. leadership</span>
+      <h2 class="section-title">Leadership & Activities</h2>
+    </div>
+
+    <div class="leadership__grid">
+      @for (role of roles; track role.title) {
+        <div class="leadership__card terminal-card reveal" appScrollReveal>
+          <div class="terminal-card__header">
+            <div class="terminal-card__dots">
+              <span class="red"></span><span class="yellow"></span><span class="green"></span>
+            </div>
+            <span class="terminal-card__title">role.log</span>
+          </div>
+
+          @if (role.image) {
+            <div class="leadership__img-wrap">
+              <img [src]="role.image" [alt]="role.title" class="leadership__img" />
+            </div>
+          }
+
+          <div class="terminal-card__body">
+            <div class="leadership__header">
+              <h3 class="leadership__title">{{ role.title }}</h3>
+              <span class="leadership__period">{{ role.period }}</span>
+            </div>
+            <span class="leadership__org">
+              <span class="leadership__org-icon">@</span> {{ role.org }}
+            </span>
+            @if (role.description) {
+              <p class="leadership__desc">{{ role.description }}</p>
+            }
+            @if (role.link) {
+              <a [href]="role.link" target="_blank" rel="noopener" class="leadership__link">
+                <span class="leadership__link-icon">◈</span> View on Instagram
+              </a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
