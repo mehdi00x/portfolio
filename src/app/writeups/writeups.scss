@@ -101,18 +101,36 @@
     margin-bottom: 1rem;
   }
 
+  // primary CTA — a solid green button so recruiters clearly see it's clickable
   &__link {
     margin-top: auto;
     align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--accent-green);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #04120a;
+    background: var(--accent-green);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.15rem;
+    box-shadow: 0 0 14px rgba(0, 255, 65, 0.35);
+    transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
 
-    &:hover { border-bottom-color: var(--accent-green); }
-    &:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
+    &:hover {
+      background: #47ff77;
+      box-shadow: 0 0 26px rgba(0, 255, 65, 0.6);
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 3px;
+    }
   }
 }
 

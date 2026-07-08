@@ -47,8 +47,8 @@ export const WRITEUPS: Writeup[] = [
     summary:
       'How a working HTTP server is built from raw Linux syscalls with no libraries — and what it teaches about the OS/CPU boundary.',
     tags: ['Assembly x86-64', 'Linux', 'Syscalls', 'Networking'],
-    link: 'https://www.linkedin.com/posts/mehdi-abouelmouahib-52b161254_%F0%9D%97%95%F0%9D%98%82%F0%9D%97%B6%F0%9D%97%B9%F0%9D%97%B1%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%97%AE-%F0%9D%97%95%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%86-%F0%9D%97%9B%F0%9D%97%A7%F0%9D%97%A7%F0%9D%97%A3-ugcPost-7375533103110586368-8edC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6ru7MB0ImEKKsjQEdxEhIuFqFnNGGpIJw',
-    linkLabel: 'View post',
+    link: '/docs/Assembly_server_writeup.pdf',
+    linkLabel: 'Read writeup',
     featured: true,
   },
 ];
