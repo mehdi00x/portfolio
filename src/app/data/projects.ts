@@ -6,6 +6,25 @@ import { Project } from './types';
 // clicking a skill filters to the matching projects.
 export const PROJECTS: Project[] = [
   {
+    title: 'LeanMassCalculator — Android Security Hardening',
+    category: 'Mobile Security',
+    date: '2026',
+    context: 'Personal Project',
+    file: 'masvs_hardening.kt',
+    summary:
+      'A Kotlin/Firebase Android app hardened against common mobile risks, following the OWASP MASVS.',
+    problem:
+      'Mobile apps routinely leak locally-stored data, trust weak certificates, allow account enumeration, and run unprotected on rooted devices. The goal was to harden a real Kotlin/Firebase Android app against these classes of risk.',
+    work:
+      'Applied OWASP MASVS-based hardening: disabled Android backup to block local database extraction, enforced an HTTPS-only network config with restricted certificate trust anchors, added inactivity session timeouts, tightened physiological input validation, returned generic authentication errors to prevent account enumeration, and added root-detection warnings.',
+    tools: ['Kotlin', 'Android SDK', 'Firebase', 'OWASP MASVS'],
+    result:
+      'Reduced exposure to local-data extraction, MITM, account enumeration, and rooted-device tampering — each mitigation mapped to its MASVS control.',
+    tags: ['Android', 'Mobile Security', 'OWASP MASVS', 'Kotlin', 'Firebase'],
+    links: { github: 'https://github.com/mehdi00x/leanmasscalculator-android-security' },
+    featured: true,
+  },
+  {
     title: 'RCE Vulnerability Analysis & Automated PoC',
     category: 'Vulnerability Research',
     date: '2024',
@@ -43,6 +62,7 @@ export const PROJECTS: Project[] = [
     tags: ['Assembly x86-64', 'Linux', 'Syscalls', 'Networking', 'Low-Level'],
     image: '/images/http.png',
     links: {
+      github: 'https://github.com/mehdi00x/x86_64-http-server-assembly',
       demo: 'https://www.linkedin.com/posts/mehdi-abouelmouahib-52b161254_%F0%9D%97%95%F0%9D%98%82%F0%9D%97%B6%F0%9D%97%B9%F0%9D%97%B1%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%97%AE-%F0%9D%97%95%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%86-%F0%9D%97%9B%F0%9D%97%A7%F0%9D%97%A7%F0%9D%97%A3-ugcPost-7375533103110586368-8edC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6ru7MB0ImEKKsjQEdxEhIuFqFnNGGpIJw',
     },
     featured: true,
@@ -72,6 +92,7 @@ export const PROJECTS: Project[] = [
 export const PROJECT_CATEGORIES: string[] = (() => {
   const order: string[] = [
     'Vulnerability Research',
+    'Mobile Security',
     'Reverse Engineering',
     'Low-Level & Systems',
     'CTF',

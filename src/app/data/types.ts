@@ -5,6 +5,7 @@
 
 export type ProjectCategory =
   | 'Vulnerability Research'
+  | 'Mobile Security'
   | 'Low-Level & Systems'
   | 'Reverse Engineering'
   | 'CTF'
