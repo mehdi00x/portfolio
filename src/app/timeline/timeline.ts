@@ -45,7 +45,7 @@ export class Timeline {
       type: 'edu',
       title: 'Engineering Degree — Computer Science & Cybersecurity',
       org: 'ENSA Agadir',
-      date: '2021 – 2026',
+      date: '2022 – 2027',
       points: [
         'Specialty: Security & Digital Trust',
         'Includes 2 years of integrated preparatory classes',
@@ -56,7 +56,7 @@ export class Timeline {
       type: 'edu',
       title: 'Baccalauréat Sciences Mathématiques B',
       org: 'Al-Idrissi Technical High School - Agadir',
-      date: '2021',
+      date: '2022',
       points: [],
       image: '/images/idrissi_schoole.jpg',
     },
