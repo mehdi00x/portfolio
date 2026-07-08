@@ -16,10 +16,31 @@
             <span class="terminal-card__title">role.log</span>
           </div>
 
-          @if (role.image) {
-            <div class="leadership__img-wrap">
-              <img [src]="role.image" [alt]="role.title" class="leadership__img" />
+          <!-- Split frame: two images half-and-half -->
+          @if (role.images && role.images.length === 2) {
+            <div class="leadership__img-wrap leadership__img-wrap--split">
+              @for (img of role.images; track img) {
+                <button
+                  type="button"
+                  class="leadership__img-btn"
+                  (click)="openImage(img, role)"
+                  [attr.aria-label]="'View photo for ' + role.title"
+                >
+                  <img [src]="img" [alt]="role.title" class="leadership__img" loading="lazy" />
+                  <span class="leadership__zoom" aria-hidden="true">⤢</span>
+                </button>
+              }
             </div>
+          } @else if (role.image) {
+            <button
+              type="button"
+              class="leadership__img-wrap leadership__img-btn"
+              (click)="openImage(role.image!, role)"
+              [attr.aria-label]="'View photo for ' + role.title"
+            >
+              <img [src]="role.image" [alt]="role.title" class="leadership__img" loading="lazy" />
+              <span class="leadership__zoom" aria-hidden="true">⤢</span>
+            </button>
           }
 
           <div class="terminal-card__body">
@@ -30,9 +51,34 @@
             <span class="leadership__org">
               <span class="leadership__org-icon">@</span> {{ role.org }}
             </span>
+            @if (role.badge) {
+              <span class="leadership__badge">{{ role.badge }}</span>
+            }
             @if (role.description) {
               <p class="leadership__desc">{{ role.description }}</p>
             }
+
+            <!-- Creative expandable "show details" (terminal output) -->
+            @if (role.details && role.details.length) {
+              @if (isExpanded(role.title)) {
+                <div class="leadership__details">
+                  @for (line of role.details; track line) {
+                    <p class="leadership__details-line">
+                      <span class="leadership__details-prompt">&gt;</span> {{ line }}
+                    </p>
+                  }
+                </div>
+              }
+              <button
+                type="button"
+                class="leadership__expand"
+                [attr.aria-expanded]="isExpanded(role.title)"
+                (click)="toggleDetails(role.title)"
+              >
+                {{ isExpanded(role.title) ? '▲ hide details' : '▼ show details' }}
+              </button>
+            }
+
             @if (role.link) {
               <a [href]="role.link" target="_blank" rel="noopener" class="leadership__link">
                 <span class="leadership__link-icon">◈</span> View on Instagram

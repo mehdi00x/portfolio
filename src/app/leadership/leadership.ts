@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ScrollReveal } from '../scroll-reveal';
+import { Lightbox } from '../services/lightbox';
 
 interface Role {
   title: string;
   org: string;
   period: string;
-  description: string;
+  description?: string;
   image?: string;
+  /** two images shown split half-and-half in one frame */
+  images?: string[];
   link?: string;
+  /** optional expandable "show details" lines (terminal style) */
+  details?: string[];
+  /** small badge, e.g. a competition tag */
+  badge?: string;
 }
 
 @Component({
@@ -17,7 +24,24 @@ interface Role {
   styleUrl: './leadership.scss',
 })
 export class Leadership {
+  private lightbox = inject(Lightbox);
+
   roles: Role[] = [
+    {
+      title: 'CTF — GCDSTE Finalist',
+      org: 'ENSA Marrakech',
+      period: 'April 2025',
+      badge: '🚩 Competition',
+      description:
+        'National Capture The Flag competition spanning Reverse Engineering, Cryptography, Web and OSINT.',
+      image: '/images/CTF.jpeg',
+      details: [
+        'Reached the finals — top 25 of 75 teams',
+        'Ranked 7th in the qualification round',
+        'Categories: Reverse Engineering · Cryptography · Web · OSINT',
+        'Fast triage & teamwork under a strict time budget',
+      ],
+    },
     {
       title: 'President — ADE ENSA Agadir',
       org: 'ADE ENSA Agadir',
@@ -48,7 +72,7 @@ export class Leadership {
       org: 'Club FSF ENSA Agadir',
       period: 'Jan 2024 – Feb 2026',
       description: '',
-      image: '/images/fsf.jpg',
+      images: ['/images/fsf.jpg', '/images/fsf.jpeg'],
       link: 'https://www.instagram.com/fsfclub_ensaa/',
     },
     {
@@ -68,4 +92,24 @@ export class Leadership {
       link: 'https://www.instagram.com/ade.ensaa/',
     },
   ];
+
+  private expandedId = signal<string | null>(null);
+
+  toggleDetails(title: string) {
+    this.expandedId.update((t) => (t === title ? null : title));
+  }
+
+  isExpanded(title: string): boolean {
+    return this.expandedId() === title;
+  }
+
+  openImage(src: string, role: Role) {
+    this.lightbox.open({
+      src,
+      title: role.title,
+      description:
+        role.description ||
+        `${role.org} · ${role.period}`,
+    });
+  }
 }

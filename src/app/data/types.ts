@@ -33,6 +33,8 @@ export interface Project {
   /** tags used by the tag filter and by skill → project cross-linking */
   tags: string[];
   image?: string;
+  /** CSS object-position for the card image (default 'center') */
+  imagePosition?: string;
   links?: ProjectLinks;
   featured?: boolean;
 }

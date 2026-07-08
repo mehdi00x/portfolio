@@ -7,6 +7,27 @@ import { Writeup } from './types';
 // names from skills.ts so the tag filter and skill cross-linking work.
 export const WRITEUPS: Writeup[] = [
   {
+    title: 'AndroGoat — Full Android Mobile Security Assessment',
+    category: 'Mobile Security',
+    date: '2025',
+    readingTime: '17-page writeup',
+    summary:
+      'End-to-end pentest of the intentionally-vulnerable AndroGoat app: HTTPS traffic interception with Burp Suite, static analysis in JADX-GUI (manifest, exported components, hardcoded secrets), then rooting the emulator with rootAVD and bypassing client-side root detection at runtime with a custom Frida hook.',
+    tags: [
+      'Android',
+      'Mobile Security',
+      'Burp Suite',
+      'JADX',
+      'Frida',
+      'ADB',
+      'Root Detection Bypass',
+      'OWASP MASTG',
+    ],
+    link: '/docs/androgoat_personal_mobile_security_writeup.pdf',
+    linkLabel: 'Read writeup',
+    featured: true,
+  },
+  {
     title: 'RCE Exploitation of a Lua-based FTP Server (CVE-2025-47812)',
     category: 'Vulnerability Research',
     date: '2024',

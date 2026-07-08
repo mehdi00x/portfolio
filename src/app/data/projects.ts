@@ -21,6 +21,8 @@ export const PROJECTS: Project[] = [
     result:
       'Reduced exposure to local-data extraction, MITM, account enumeration, and rooted-device tampering — each mitigation mapped to its MASVS control.',
     tags: ['Android', 'Mobile Security', 'OWASP MASVS', 'Kotlin', 'Firebase'],
+    image: '/images/screen_app2.png',
+    imagePosition: 'center top',
     links: { github: 'https://github.com/mehdi00x/leanmasscalculator-android-security' },
     featured: true,
   },
@@ -66,25 +68,6 @@ export const PROJECTS: Project[] = [
       demo: 'https://www.linkedin.com/posts/mehdi-abouelmouahib-52b161254_%F0%9D%97%95%F0%9D%98%82%F0%9D%97%B6%F0%9D%97%B9%F0%9D%97%B1%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%B4-%F0%9D%97%AE-%F0%9D%97%95%F0%9D%97%B6%F0%9D%97%BB%F0%9D%97%AE%F0%9D%97%BF%F0%9D%98%86-%F0%9D%97%9B%F0%9D%97%A7%F0%9D%97%A7%F0%9D%97%A3-ugcPost-7375533103110586368-8edC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6ru7MB0ImEKKsjQEdxEhIuFqFnNGGpIJw',
     },
     featured: true,
-  },
-  {
-    title: 'CTF — GCDSTE Finalist',
-    category: 'CTF',
-    date: 'April 2025',
-    context: 'ENSA Marrakech',
-    file: 'ctf_writeup.md',
-    summary:
-      'Qualified among the top 25 of 75 teams (7th in qualifications) across RE, Crypto, Web and OSINT challenges.',
-    problem:
-      'Compete against 75 teams in a time-boxed Capture The Flag spanning reverse engineering, cryptography, web and OSINT categories.',
-    work:
-      'Solved challenges across all four categories under time pressure, coordinating with the team on splitting and prioritising tasks.',
-    tools: ['Ghidra', 'GDB', 'Burp Suite', 'Python'],
-    result:
-      'Ranked 7th in qualifications and reached the finals in the top 25 of 75 teams.',
-    tags: ['CTF', 'Reverse Engineering', 'Cryptography', 'Web', 'OSINT'],
-    image: '/images/CTF.jpeg',
-    featured: false,
   },
 ];
 

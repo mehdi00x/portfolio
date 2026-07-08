@@ -65,7 +65,13 @@
 
           @if (proj.image) {
             <div class="projects__img-wrap">
-              <img [src]="proj.image" [alt]="proj.title" class="projects__img" loading="lazy" />
+              <img
+                [src]="proj.image"
+                [alt]="proj.title"
+                class="projects__img"
+                [style.object-position]="proj.imagePosition || 'center'"
+                loading="lazy"
+              />
             </div>
           }
 
