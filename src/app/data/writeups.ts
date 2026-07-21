@@ -9,7 +9,7 @@ export const WRITEUPS: Writeup[] = [
   {
     title: 'AndroGoat — Full Android Mobile Security Assessment',
     category: 'Mobile Security',
-    date: '2025',
+    date: '2026',
     readingTime: '17-page writeup',
     summary:
       'End-to-end pentest of the intentionally-vulnerable AndroGoat app: HTTPS traffic interception with Burp Suite, static analysis in JADX-GUI (manifest, exported components, hardcoded secrets), then rooting the emulator with rootAVD and bypassing client-side root detection at runtime with a custom Frida hook.',
@@ -30,7 +30,7 @@ export const WRITEUPS: Writeup[] = [
   {
     title: 'RCE Exploitation of a Lua-based FTP Server (CVE-2025-47812)',
     category: 'Vulnerability Research',
-    date: '2024',
+    date: '2025',
     readingTime: 'Full report',
     summary:
       'Root-cause analysis and automated proof-of-concept for a remote code execution vulnerability, written up during my 1337 / UM6P internship.',
@@ -42,7 +42,7 @@ export const WRITEUPS: Writeup[] = [
   {
     title: 'Building an HTTP Server in x86-64 Assembly',
     category: 'Low-Level & Systems',
-    date: '2024',
+    date: '2025',
     readingTime: '4 min',
     summary:
       'How a working HTTP server is built from raw Linux syscalls with no libraries — and what it teaches about the OS/CPU boundary.',

@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'RCE Vulnerability Analysis & Automated PoC',
     category: 'Vulnerability Research',
-    date: '2024',
+    date: '2025',
     context: 'Technical Internship — 1337 / UM6P, Morocco',
     file: 'rce_analysis.py',
     summary:
@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'HTTP Server in x86-64 Assembly',
     category: 'Low-Level & Systems',
-    date: '2024',
+    date: '2025',
     context: 'Personal Project',
     file: 'http_server.asm',
     summary:
