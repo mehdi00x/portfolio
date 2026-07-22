@@ -43,7 +43,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'Kotlin', label: 'Kotlin — Android' },
       { name: 'Python', label: 'C / Java / Python' },
       { name: 'Syscalls', label: 'Bash Scripting' },
-      { name: 'Web', label: 'HTML / CSS / JavaScript' },
+      { name: 'Web', label: 'HTML / CSS / JavaScript - Angular' },
       { name: 'Linux', label: 'Linux Administration' },
     ],
   },
